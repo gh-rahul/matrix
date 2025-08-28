@@ -2,10 +2,11 @@ name: Matrix demo
 on: [ push, pull_request, workflow_dispatch ]
 jobs:
   build:
-    runs-on: ubuntu-latest
     strategy:
       matrix:
 
         os: [ ubuntu-latest, windows-latest, macos-latest ]
+   
+    runs-on: ${{ matrix.os }}
     steps:
-    - uses: hashicorp/setup-terraform@v3
+          - uses: hashicorp/setup-terraform@v3
